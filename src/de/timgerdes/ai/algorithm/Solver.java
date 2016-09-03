@@ -16,18 +16,19 @@ public class Solver implements Runnable {
         algorithm.setup();
         algorithm.restart();
 
-        while(true) {
-            System.out.println("Searching for move...");
-            Direction direction = algorithm.findBestMove();
-            System.out.println("Moving " + direction + "...");
-            algorithm.move(direction);
-
-            try {
-                Thread.sleep(500L);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        long start = System.currentTimeMillis();
+        int highestCell = 2;
+        while(highestCell < 2048 && algorithm.getStatus().equals("running")) {
+            int currentHighestCell = algorithm.getBoard().getHighestCell();
+            if(currentHighestCell > highestCell) {
+                System.out.println(currentHighestCell + " : " + (System.currentTimeMillis() - start) * 0.001);
+                highestCell = currentHighestCell;
             }
+
+            Direction direction = algorithm.findBestMove();
+            algorithm.move(direction);
         }
+        algorithm.getRemote().stopBrowser();
     }
 
 
