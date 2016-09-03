@@ -19,7 +19,12 @@ public class Board {
 
     @Override
     public Board clone() {
-        Board b = new Board(board);
+        Board b = new Board(new int[4][4]);
+
+        for(int x = 0; x < 4; x++)
+            for(int y = 0; y < 4; y++)
+                b.setCell(x, y, getCell(x, y));
+
         b.setScore(getScore());
 
         return b;
@@ -91,7 +96,7 @@ public class Board {
      * @return
      */
     public Board move(Direction direction) {
-        int[][] workBoard = board.clone();
+        int[][] workBoard = clone().toArray();
         int times = 0;
         int points = 0;
         boolean left = true;
