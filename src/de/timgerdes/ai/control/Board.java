@@ -50,8 +50,17 @@ public class Board {
         board[x][y] = value;
     }
 
-    public void setBoard(int[][] board) {
-        this.board = board;
+    /**
+     * Returns the value of the highest cell
+     * @return
+     */
+    public int getHighestCell() {
+        int highestCell = 0;
+        for(int x = 0; x < 4; x++)
+            for(int y = 0; y < 4; y++)
+                if(getCell(x, y) > highestCell)
+                    highestCell = getCell(x, y);
+        return highestCell;
     }
 
     /**
