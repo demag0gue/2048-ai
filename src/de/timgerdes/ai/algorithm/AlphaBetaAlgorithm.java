@@ -15,7 +15,8 @@ public class AlphaBetaAlgorithm extends GameAlgorithm {
 
     @Override
     public Direction findBestMove() {
-        return (Direction) find(getBoard(), 7, Integer.MIN_VALUE, Integer.MAX_VALUE, true)[0];
+        Direction direction = (Direction) find(getBoard(), 7, Integer.MIN_VALUE, Integer.MAX_VALUE, true)[0];
+        return (direction != null) ? direction : findBestMove();
     }
 
     public Object[] find(Board board, int depth, int alpha, int beta, boolean player) {
