@@ -35,10 +35,7 @@ public class RemoteChromeBrowserController implements RemoteBrowserController {
                 return false;
             }}, 0);
             wait.run();
-            wait.join();
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }

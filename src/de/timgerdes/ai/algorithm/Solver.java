@@ -1,9 +1,8 @@
 package de.timgerdes.ai.algorithm;
 
-import de.timgerdes.ai.algorithm.GameAlgorithm;
 import de.timgerdes.ai.control.Direction;
 
-public class Solver extends Thread {
+public class Solver implements Runnable {
 
     private GameAlgorithm algorithm;
 
