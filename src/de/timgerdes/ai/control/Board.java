@@ -189,8 +189,11 @@ public class Board {
      * @param compare
      * @return
      */
-    public boolean isEqual(Board compare) {
-        return Arrays.deepEquals(board, compare.toArray());
+    @Override
+    public boolean equals(Object compare) {
+        if(!(compare instanceof Board))
+            return false;
+        return Arrays.deepEquals(board, ((Board)compare).toArray());
     }
 
 }
