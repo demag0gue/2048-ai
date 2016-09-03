@@ -3,9 +3,6 @@ package de.timgerdes.remote;
 import de.timgerdes.remote.websocket.ClientWebSocket;
 import de.timgerdes.remote.websocket.Request;
 
-import javax.websocket.DeploymentException;
-import java.net.URISyntaxException;
-
 public interface RemoteBrowserController {
 
     /**
