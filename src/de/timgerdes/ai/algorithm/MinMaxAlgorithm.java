@@ -32,7 +32,7 @@ public class MinMaxAlgorithm extends GameAlgorithm {
                     Board workBoard = board.move(direction);
                     int points = workBoard.getScore() - board.getScore();
 
-                    if(points == 0 && board.isEqual(workBoard)) //nothing happened..
+                    if(points == 0 && board.equals(workBoard)) //nothing happened..
                         continue;
 
                     int score = (int) find(workBoard, depth - 1, false)[1];

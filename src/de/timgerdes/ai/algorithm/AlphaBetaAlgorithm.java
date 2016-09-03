@@ -32,7 +32,7 @@ public class AlphaBetaAlgorithm extends GameAlgorithm {
 
                     int points = workBoard.getScore() - board.getScore();
 
-                    if(points == 0 && board.isEqual(workBoard)) {
+                    if(points == 0 && board.equals(workBoard)) {
                         continue;
                     }
 
