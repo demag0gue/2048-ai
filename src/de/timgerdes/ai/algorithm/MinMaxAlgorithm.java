@@ -15,7 +15,8 @@ public class MinMaxAlgorithm extends GameAlgorithm {
 
     @Override
     public Direction findBestMove() {
-        return (Direction) find(getBoard(), 7, true)[0];
+        Direction direction = (Direction) find(getBoard(), 7, true)[0];
+        return (direction != null) ? direction : findBestMove();
     }
 
     private Object[] find(Board board, int depth, boolean player) {
