@@ -5,9 +5,10 @@ import de.timgerdes.remote.json.JSONParser;
 import de.timgerdes.remote.wait.WaitThread;
 import de.timgerdes.remote.websocket.ClientWebSocket;
 import de.timgerdes.remote.websocket.Request;
-import org.glassfish.tyrus.client.ClientManager;
 
+import javax.websocket.ContainerProvider;
 import javax.websocket.DeploymentException;
+import javax.websocket.WebSocketContainer;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
@@ -55,13 +56,15 @@ public class RemoteChromeBrowserController implements RemoteBrowserController {
         parser.readFromUrl("http://localhost:" + getPort() + "/json");
         String webSocket = (String) parser.find(new JSONPageFilter());
 
-        ClientManager cm = ClientManager.createClient();
+        WebSocketContainer cm = ContainerProvider.getWebSocketContainer();
 
         try {
             cm.connectToServer(client, new URI(webSocket));
         } catch (DeploymentException e) {
             e.printStackTrace();
         } catch (URISyntaxException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
