@@ -18,18 +18,19 @@ public class Solver implements Runnable {
 
         long start = System.currentTimeMillis();
         int highestCell = 2;
-        while(highestCell < 2048 && algorithm.getStatus().equals("running")) {
+        while(algorithm.getStatus().equals("running")) {
             int currentHighestCell = algorithm.getBoard().getHighestCell();
             if(currentHighestCell > highestCell) {
                 System.out.println(currentHighestCell + " : " + (System.currentTimeMillis() - start) * 0.001);
                 highestCell = currentHighestCell;
             }
+            if(highestCell == 2048)
+                break;
 
             Direction direction = algorithm.findBestMove();
             algorithm.move(direction);
         }
         algorithm.getRemote().stopBrowser();
     }
-
 
 }
