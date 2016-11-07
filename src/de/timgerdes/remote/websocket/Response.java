@@ -52,7 +52,8 @@ public class Response {
     }
 
     public boolean hasError() {
-        return getJSON() == null || getJSON().getBoolean("wasThrown");
+        JSONObject json = getJSON().getJSONObject("result");
+        return json.has("subtype") && json.getString("subtype").equals("error");
     }
 
 }
